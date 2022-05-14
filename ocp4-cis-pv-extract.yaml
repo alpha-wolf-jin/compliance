@@ -1,0 +1,16 @@
+apiVersion: "v1"
+kind: Pod
+metadata:
+  name: ocp4-cis-pv-extract
+spec:
+  containers:
+    - name: ocp4-cis-pv-extract-pod
+      image: registry.access.redhat.com/ubi8/ubi
+      command: ["sleep", "3000"]
+      volumeMounts:
+      - mountPath: "/ocp4-cis--scan-results"
+        name: ocp4-cis-worker-pv
+  volumes:
+    - name: ocp4-cis-worker-pv
+      persistentVolumeClaim:
+        claimName: ocp4-cis
