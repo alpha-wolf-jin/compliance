@@ -15,6 +15,13 @@ git push -u origin main
 git add . ; git commit -a -m "update README" ; git push -u origin main
 ```
 
+**oc logn**
+```
+# oc login https://api.vuyee8aj.eastus.aroapp.io:6443/
+You must obtain an API token by visiting https://oauth-openshift.apps.vuyee8aj.eastus.aroapp.io/oauth/token/request
+
+oc login --token=sha256~ylgJMYfU --server=https://api.vuyee8aj.eastus.aroapp.io:6443
+```
 ## Compliance Operator Deployment
 
 
