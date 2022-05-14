@@ -1,0 +1,3 @@
+NAME     CONFIG                                             UPDATED   UPDATING   DEGRADED   MACHINECOUNT   READYMACHINECOUNT   UPDATEDMACHINECOUNT   DEGRADEDMACHINECOUNT   AGE
+master   rendered-master-e05ecb10743114245931e3f9817fb593   True      False      False      3              3                   3                     0                      46h
+worker   rendered-worker-753c28006010d2234175d27a7a7dd353   True      False      False      3              3                   3                     0                      46h

@@ -1,0 +1,19 @@
+apiVersion: compliance.openshift.io/v1alpha1
+kind: ScanSetting
+metadata:
+  name: rs-on-workers
+  namespace: openshift-compliance
+rawResultStorage:
+  nodeSelector:
+    node-role.kubernetes.io/worker: ""
+  pvaccessModes:
+  - ReadWriteOnce
+  storageClassName: managed-premium
+  rotation: 10
+  size: 10Gi
+roles:
+- worker
+- master
+scanTolerations:
+  - operator: Exists
+schedule: '0 1 * * *'

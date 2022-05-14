@@ -1,0 +1,18 @@
+NAME                                               GENERATEDBYCONTROLLER                      IGNITIONVERSION   AGE
+00-master                                          a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             22h
+00-worker                                          a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             22h
+01-master-container-runtime                        a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             22h
+01-master-kubelet                                  a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             22h
+01-worker-container-runtime                        a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             22h
+01-worker-kubelet                                  a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             22h
+90-aro-worker-registries                                                                      2.2.0             22h
+99-master-aro-dns                                                                             2.2.0             22h
+99-master-generated-registries                     a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             22h
+99-master-ssh                                                                                 3.2.0             22h
+99-worker-aro-dns                                                                             2.2.0             22h
+99-worker-generated-kubelet                        a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             21h
+99-worker-generated-registries                     a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             22h
+99-worker-ssh                                                                                 3.2.0             22h
+rendered-master-8f2caa2060dca8b7b8b8b2f5925ad4e6   a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             22h
+rendered-worker-2c7ad2cbfc2bf00b1576be11f6ae7a23   a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             21h
+rendered-worker-9149410b5df504027c0dad36deb2dcd3   a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             22h
