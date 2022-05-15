@@ -564,6 +564,17 @@ aro-cluster-zzzmc-k2ssj-worker-eastus1-jvmn4   Ready,SchedulingDisabled   worker
 aro-cluster-zzzmc-k2ssj-worker-eastus2-7dgmg   Ready                      worker   17h   v1.22.5+a36406b
 aro-cluster-zzzmc-k2ssj-worker-eastus3-j76jg   Ready                      worker   17h   v1.22.5+a36406b
 
+# watch oc get mcp
+
+Every 2.0s: oc get mcp                                                                        localhost.localdomain: Sun May 15 10:53:17 2022
+
+NAME     CONFIG                                             UPDATED   UPDATING   DEGRADED   MACHINECOUNT   READYMACHINECOUNT   UPDATEDMACHINE
+COUNT   DEGRADEDMACHINECOUNT   AGE
+master   rendered-master-3d71873c0e6c88466964b1ff8579df62   False     True	 False      3              1                   1
+        0                      17h
+worker   rendered-worker-46155890c939ab666433210d29012937   False     True	 False      3              2                   2
+        0                      17h
+
 ```
 
 
