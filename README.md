@@ -689,6 +689,51 @@ aro-cluster-k69pt-l2wvn-worker-eastus1-94572   Provisioned   Standard_D4s_v3   e
 aro-cluster-k69pt-l2wvn-worker-eastus2-jrhn9   Running       Standard_D4s_v3   eastus   2      137m
 aro-cluster-k69pt-l2wvn-worker-eastus3-4rmzn   Running       Standard_D4s_v3   eastus   3      137m
 
+# oc get machine -n openshift-machine-api
+NAME                                           PHASE     TYPE              REGION   ZONE   AGE
+aro-cluster-k69pt-l2wvn-master-0               Running   Standard_D8s_v3   eastus   1      145m
+aro-cluster-k69pt-l2wvn-master-1               Running   Standard_D8s_v3   eastus   2      145m
+aro-cluster-k69pt-l2wvn-master-2               Running   Standard_D8s_v3   eastus   3      145m
+aro-cluster-k69pt-l2wvn-worker-eastus1-94572   Running   Standard_D4s_v3   eastus   1      4m22s
+aro-cluster-k69pt-l2wvn-worker-eastus2-jrhn9   Running   Standard_D4s_v3   eastus   2      141m
+aro-cluster-k69pt-l2wvn-worker-eastus3-4rmzn   Running   Standard_D4s_v3   eastus   3      141m
+
+# oc get node
+NAME                                           STATUS     ROLES    AGE    VERSION
+aro-cluster-k69pt-l2wvn-master-0               Ready      master   143m   v1.22.5+a36406b
+aro-cluster-k69pt-l2wvn-master-1               Ready      master   143m   v1.22.5+a36406b
+aro-cluster-k69pt-l2wvn-master-2               Ready      master   144m   v1.22.5+a36406b
+aro-cluster-k69pt-l2wvn-worker-eastus1-94572   NotReady   worker   29s    v1.22.5+a36406b
+aro-cluster-k69pt-l2wvn-worker-eastus2-jrhn9   Ready      worker   136m   v1.22.5+a36406b
+aro-cluster-k69pt-l2wvn-worker-eastus3-4rmzn   Ready      worker   136m   v1.22.5+a36406b
+
+```
+
+
+```
+# oc describe pod ocp4-cis-node-master-rs-854b67545f-9jg97
+...
+Events:
+  Type     Reason            Age                 From               Message
+  ----     ------            ----                ----               -------
+  Warning  FailedScheduling  62m                 default-scheduler  0/6 nodes are available: 1 node(s) were unschedulable, 2 node(s) had volume node affinity conflict, 3 node(s) had taint {node-role.kubernetes.io/master: }, that the pod didn't tolerate.
+  Warning  FailedScheduling  21m (x40 over 61m)  default-scheduler  0/6 nodes are available: 1 node(s) were unschedulable, 2 node(s) had volume node affinity conflict, 3 node(s) had taint {node-role.kubernetes.io/master: }, that the pod didn't tolerate.
+
+
+# oc edit ScanSetting rs-on-workers
+...
+roles:
+- worker
+- master
+scanTolerations:
+- effect: NoSchedule
+  key: node-role.kubernetes.io/master
+  operator: Exists
+- effect: NoSchedule
+  key: node.kubernetes.io/unschedulable
+  operator: Exists
+schedule: 0 1 * * *
+
 ```
 
 ```
@@ -791,5 +836,30 @@ openscap-pod-7eae438a8db5097be20881bc53a2d26b593da270       0/2     Completed   
 openscap-pod-8885e18ac4bfc20261916fbf7f67f9430fb8aed9       0/2     Completed           0             102s
 openscap-pod-f2b59d848a1e279ce70a7b1cdf224688d1137361       0/2     Completed           0             103s
 rhcos4-openshift-compliance-pp-6574f6fb4c-wkkj8             1/1     Running             0             22m
+
+```
+
+## Delete & Re-Create ScanSetting ScanSettingBinding
+
+```
+[root@localhost compliance]# oc get ComplianceCheckResult | grep FAIL
+ocp4-cis-audit-log-forwarding-enabled                                          FAIL     medium
+ocp4-cis-configure-network-policies-namespaces                                 FAIL     high
+ocp4-cis-idp-is-configured                                                     FAIL     medium
+ocp4-cis-kubeadmin-removed                                                     FAIL     medium
+ocp4-cis-node-master-kubelet-enable-protect-kernel-defaults                    FAIL     medium
+ocp4-cis-node-worker-kubelet-configure-event-creation                          FAIL     medium
+ocp4-cis-node-worker-kubelet-configure-tls-cipher-suites                       FAIL     medium
+ocp4-cis-node-worker-kubelet-enable-iptables-util-chains                       FAIL     medium
+ocp4-cis-node-worker-kubelet-enable-protect-kernel-defaults                    FAIL     medium
+ocp4-cis-node-worker-kubelet-eviction-thresholds-set-hard-imagefs-inodesfree   FAIL     medium
+ocp4-cis-node-worker-kubelet-eviction-thresholds-set-soft-imagefs-available    FAIL     medium
+ocp4-cis-node-worker-kubelet-eviction-thresholds-set-soft-imagefs-inodesfree   FAIL     medium
+ocp4-cis-node-worker-kubelet-eviction-thresholds-set-soft-memory-available     FAIL     medium
+ocp4-cis-node-worker-kubelet-eviction-thresholds-set-soft-nodefs-available     FAIL     medium
+ocp4-cis-node-worker-kubelet-eviction-thresholds-set-soft-nodefs-inodesfree    FAIL     medium
+ocp4-cis-scc-limit-container-allowed-capabilities                              FAIL     medium
+[root@localhost compliance]# oc get ComplianceCheckResult | grep FAIL | wc -l
+16
 
 ```
