@@ -582,7 +582,71 @@ aro-cluster-zzzmc-k2ssj-worker-eastus1-jvmn4   Ready                      worker
 aro-cluster-zzzmc-k2ssj-worker-eastus2-7dgmg   Ready                      worker   17h   v1.22.5+a36406b
 aro-cluster-zzzmc-k2ssj-worker-eastus3-j76jg   Ready                      worker   17h   v1.22.5+a36406b
 
+# oc get co
+NAME                                       VERSION   AVAILABLE   PROGRESSING   DEGRADED   SINCE   MESSAGE
+aro                                                  True        False         False      17h     
+authentication                             4.9.28    True        False         False      17h     
+baremetal                                  4.9.28    True        False         False      17h     
+cloud-controller-manager                   4.9.28    True        False         False      17h     
+cloud-credential                           4.9.28    True        False         False      17h     
+cluster-autoscaler                         4.9.28    True        False         False      17h     
+config-operator                            4.9.28    True        False         False      17h     
+console                                    4.9.28    True        False         False      17h     
+csi-snapshot-controller                    4.9.28    True        False         False      17h     
+dns                                        4.9.28    True        False         False      17h     
+etcd                                       4.9.28    True        False         False      17h     
+image-registry                             4.9.28    True        False         False      17h     
+ingress                                    4.9.28    True        False         False      17h     
+insights                                   4.9.28    True        False         False      17h     
+kube-apiserver                             4.9.28    True        True          False      17h     NodeInstallerProgressing: 1 nodes are at revision 12; 2 nodes are at revision 13
+kube-controller-manager                    4.9.28    True        False         False      17h     
+kube-scheduler                             4.9.28    True        False         False      17h     
+kube-storage-version-migrator              4.9.28    True        False         False      10m     
+machine-api                                4.9.28    True        False         False      17h     
+machine-approver                           4.9.28    True        False         False      17h     
+machine-config                             4.9.28    True        False         False      17h     
+marketplace                                4.9.28    True        False         False      17h     
+monitoring                                 4.9.28    True        False         False      17h     
+network                                    4.9.28    True        False         False      17h     
+node-tuning                                4.9.28    True        False         False      10m     
+openshift-apiserver                        4.9.28    True        False         False      6m34s   
+openshift-controller-manager               4.9.28    True        False         False      17h     
+openshift-samples                          4.9.28    True        False         False      17h     
+operator-lifecycle-manager                 4.9.28    True        False         False      17h     
+operator-lifecycle-manager-catalog         4.9.28    True        False         False      17h     
+operator-lifecycle-manager-packageserver   4.9.28    True        False         False      17h     
+service-ca                                 4.9.28    True        False         False      17h     
+storage                                    4.9.28    True        False         False      17h     
+
+```
+>OCP cluster will be not available during remediation
+
+>Need request token and re-login
+
+```
+# oc get co
+error: You must be logged in to the server (Unauthorized)
+
+# oc login --token=sha256~TdSDFbCzAclFCafGrUBknB-5vPgKFGc4PNMt75E4ZuU --server=https://api.vuyee8aj.eastus.aroapp.io:6443
 
 ```
 
+```
+Every 2.0s: oc get mcp ; oc get node                                                          localhost.localdomain: Sun May 15 11:00:27 2022
 
+NAME     CONFIG                                             UPDATED   UPDATING   DEGRADED   MACHINECOUNT   READYMACHINECOUNT   UPDATEDMACHINE
+COUNT   DEGRADEDMACHINECOUNT   AGE
+master   rendered-master-fb12484228e39cd8dd6dfba845b0b136   True      False	 False      3              3                   3
+        0                      17h
+worker   rendered-worker-36b57610ebaa955ece4195845eed3f6d   True      False	 False      3              3                   3
+        0                      17h
+NAME                                           STATUS   ROLES    AGE   VERSION
+aro-cluster-zzzmc-k2ssj-master-0               Ready    master   17h   v1.22.5+a36406b
+aro-cluster-zzzmc-k2ssj-master-1               Ready    master   17h   v1.22.5+a36406b
+aro-cluster-zzzmc-k2ssj-master-2               Ready    master   17h   v1.22.5+a36406b
+aro-cluster-zzzmc-k2ssj-worker-eastus1-jvmn4   Ready    worker   17h   v1.22.5+a36406b
+aro-cluster-zzzmc-k2ssj-worker-eastus2-7dgmg   Ready    worker   17h   v1.22.5+a36406b
+aro-cluster-zzzmc-k2ssj-worker-eastus3-j76jg   Ready    worker   17h   v1.22.5+a36406b
+
+
+```
