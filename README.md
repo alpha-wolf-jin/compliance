@@ -541,44 +541,41 @@ done
 
 # oc get mc
 NAME                                                           GENERATEDBYCONTROLLER                      IGNITIONVERSION   AGE
-00-master                                                      a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             17h
-00-worker                                                      a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             17h
-01-master-container-runtime                                    a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             17h
-01-master-kubelet                                              a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             17h
-01-worker-container-runtime                                    a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             17h
-01-worker-kubelet                                              a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             17h
-75-ocp4-cis-node-master-kubelet-enable-protect-kernel-sysctl                                              3.1.0             2m26s
-75-ocp4-cis-node-worker-kubelet-enable-protect-kernel-sysctl                                              3.1.0             58s
-90-aro-worker-registries                                                                                  2.2.0             17h
-99-master-aro-dns                                                                                         2.2.0             17h
-99-master-generated-kubelet                                    a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             2m37s
-99-master-generated-registries                                 a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             17h
-99-master-ssh                                                                                             3.2.0             17h
-99-worker-aro-dns                                                                                         2.2.0             17h
-99-worker-generated-kubelet                                    a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             17h
-99-worker-generated-registries                                 a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             17h
-99-worker-ssh                                                                                             3.2.0             17h
-rendered-master-205afd970e59db3366a4ccb0c9975171               a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             2m31s
-rendered-master-3d71873c0e6c88466964b1ff8579df62               a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             17h
-rendered-master-8635c738fa6855603ec9bf0ab2aad771               a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             2m21s
-rendered-master-9513fffe31854fe2644002f0258a3e9d               a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             55s
-rendered-master-a518a1e3dfd19d12d9d20b9f8865c7f1               a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             2m26s
-rendered-master-fb12484228e39cd8dd6dfba845b0b136               a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             50s
-rendered-worker-2c49d7e9a7bc563444854f895a5e37ca               a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             38s
-rendered-worker-36b57610ebaa955ece4195845eed3f6d               a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             12s
-rendered-worker-41cb89ef607fb8869d5efe44e6d7b80e               a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             33s
-rendered-worker-46155890c939ab666433210d29012937               a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             17h
-rendered-worker-4a093fe4148c79b27eeae777e9c0c70b               a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             22s
-rendered-worker-93674372c0da7bbf6a6e5ce3b2657c52               a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             43s
-rendered-worker-a2d459b8a16f6a5c578d361d30106214               a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             48s
-rendered-worker-b2d0226789cff5586f8ad52246b10122               a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             17h
-rendered-worker-ca6653237d1356c0d06be06ffd3a3acb               a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             54s
-rendered-worker-cff3d077a26c256a26d3429e7e083af5               a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             17s
+00-master                                                      a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             33m
+00-worker                                                      a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             33m
+01-master-container-runtime                                    a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             33m
+01-master-kubelet                                              a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             33m
+01-worker-container-runtime                                    a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             33m
+01-worker-kubelet                                              a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             33m
+75-ocp4-cis-node-master-kubelet-enable-protect-kernel-sysctl                                              3.1.0             2m32s
+75-ocp4-cis-node-worker-kubelet-enable-protect-kernel-sysctl                                              3.1.0             62s
+90-aro-worker-registries                                                                                  2.2.0             36m
+99-master-aro-dns                                                                                         2.2.0             36m
+99-master-generated-kubelet                                    a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             2m43s
+99-master-generated-registries                                 a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             33m
+99-master-ssh                                                                                             3.2.0             36m
+99-worker-aro-dns                                                                                         2.2.0             36m
+99-worker-generated-kubelet                                    a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             17m
+99-worker-generated-registries                                 a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             33m
+99-worker-ssh                                                                                             3.2.0             36m
+rendered-master-3b0c7e34d7b5af996938b66248255408               a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             2m22s
+rendered-master-3b0fa941cbb3b883ba1dbb3b6188beef               a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             33m
+rendered-master-3c279cd817b3abb8ca71662cf59123e1               a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             2m33s
+rendered-master-6925783b7581f02bdb7e6c9ab147169f               a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             2m38s
+rendered-master-97b164dae33766c5ac74bb074422a553               a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             2m27s
+rendered-master-c1a3517ffb9db3152fa3d58d694d488c               a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             23s
+rendered-worker-18d76dfbe03dc823d8e4c2005c7b9634               a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             17m
+rendered-worker-67d42ec2a145e39b9941cbd719d19804               a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             23s
+rendered-worker-782f4a4ebaa397efe95f1a9daebb5cc2               a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             33m
+rendered-worker-87ef76ca902b4af8680cc58f79dc972a               a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             7s
+rendered-worker-b0c20d6a30317d05d19664b877b7b6e1               a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             12s
+rendered-worker-d78e2ebeef6772986c50a4052aa5b104               a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             18s
+[root@localhost compliance]# 
 
 # oc get mcp
 NAME     CONFIG                                             UPDATED   UPDATING   DEGRADED   MACHINECOUNT   READYMACHINECOUNT   UPDATEDMACHINECOUNT   DEGRADEDMACHINECOUNT   AGE
-master   rendered-master-3d71873c0e6c88466964b1ff8579df62   False     True       False      3              0                   0                     0                      17h
-worker   rendered-worker-46155890c939ab666433210d29012937   False     True       False      3              0                   0                     0                      17h
+master   rendered-master-3b0fa941cbb3b883ba1dbb3b6188beef   False     True       False      3              0                   0                     0                      34m
+worker   rendered-worker-18d76dfbe03dc823d8e4c2005c7b9634   False     True       False      3              0                   0                     0                      34m
 
 # oc get node
 NAME                                           STATUS                     ROLES    AGE   VERSION
@@ -588,6 +585,18 @@ aro-cluster-zzzmc-k2ssj-master-2               Ready                      master
 aro-cluster-zzzmc-k2ssj-worker-eastus1-jvmn4   Ready,SchedulingDisabled   worker   17h   v1.22.5+a36406b
 aro-cluster-zzzmc-k2ssj-worker-eastus2-7dgmg   Ready                      worker   17h   v1.22.5+a36406b
 aro-cluster-zzzmc-k2ssj-worker-eastus3-j76jg   Ready                      worker   17h   v1.22.5+a36406b
+
+# oc get pod
+NAME                                                        READY   STATUS      RESTARTS      AGE
+aggregator-pod-ocp4-cis                                     0/1     Completed   0             10m
+aggregator-pod-ocp4-cis-node-master                         0/1     Completed   0             10m
+aggregator-pod-ocp4-cis-node-worker                         0/1     Completed   0             10m
+compliance-operator-5d55bf54f9-tkk8k                        1/1     Running     1 (13m ago)   14m
+ocp4-cis-node-master-aro-cluster-k69pt-l2wvn-master-1-pod   0/2     Completed   0             11m
+ocp4-openshift-compliance-pp-77849b4ff4-hd9kj               1/1     Running     0             12m
+openscap-pod-28ecb749a133e5d908a6cbee02842cc6fb7d4278       0/2     Completed   0             11m
+openscap-pod-5b9fb0e55d2b665da69cf409c05e12575228e3de       0/2     Completed   0             11m
+rhcos4-openshift-compliance-pp-77c6d7f7fd-6qfnq             1/1     Running     0             12m
 
 # watch "oc get mcp ; oc get node"
 
@@ -647,6 +656,40 @@ storage                                    4.9.28    True        False         F
 >OCP cluster will be not available during remediation
 
 >Need request token and re-login
+
+>When work nodes is stuck, use machinset to scale to 0 and scale up
+
+```
+# oc get mcp ; oc get node
+NAME     CONFIG                                             UPDATED   UPDATING   DEGRADED   MACHINECOUNT   READYMACHINECOUNT   UPDATEDMACHINECOUNT   DEGRADEDMACHINECOUNT   AGE
+master   rendered-master-c1a3517ffb9db3152fa3d58d694d488c   True      False      False      3              3                   3                     0                      136m
+worker   rendered-worker-18d76dfbe03dc823d8e4c2005c7b9634   False     True       False      3              0                   0                     0                      136m
+NAME                                           STATUS                        ROLES    AGE    VERSION
+aro-cluster-k69pt-l2wvn-master-0               Ready                         master   137m   v1.22.5+a36406b
+aro-cluster-k69pt-l2wvn-master-1               Ready                         master   137m   v1.22.5+a36406b
+aro-cluster-k69pt-l2wvn-master-2               Ready                         master   137m   v1.22.5+a36406b
+aro-cluster-k69pt-l2wvn-worker-eastus1-bps4w   NotReady,SchedulingDisabled   worker   129m   v1.22.5+a36406b
+aro-cluster-k69pt-l2wvn-worker-eastus2-jrhn9   Ready                         worker   129m   v1.22.5+a36406b
+aro-cluster-k69pt-l2wvn-worker-eastus3-4rmzn   Ready                         worker   129m   v1.22.5+a36406b
+
+# oc get machine -n openshift-machine-api
+NAME                                           PHASE     TYPE              REGION   ZONE   AGE
+aro-cluster-k69pt-l2wvn-master-0               Running   Standard_D8s_v3   eastus   1      140m
+aro-cluster-k69pt-l2wvn-master-1               Running   Standard_D8s_v3   eastus   2      140m
+aro-cluster-k69pt-l2wvn-master-2               Running   Standard_D8s_v3   eastus   3      140m
+aro-cluster-k69pt-l2wvn-worker-eastus2-jrhn9   Running   Standard_D4s_v3   eastus   2      136m
+aro-cluster-k69pt-l2wvn-worker-eastus3-4rmzn   Running   Standard_D4s_v3   eastus   3      136m
+
+# oc get machine -n openshift-machine-api
+NAME                                           PHASE         TYPE              REGION   ZONE   AGE
+aro-cluster-k69pt-l2wvn-master-0               Running       Standard_D8s_v3   eastus   1      140m
+aro-cluster-k69pt-l2wvn-master-1               Running       Standard_D8s_v3   eastus   2      140m
+aro-cluster-k69pt-l2wvn-master-2               Running       Standard_D8s_v3   eastus   3      140m
+aro-cluster-k69pt-l2wvn-worker-eastus1-94572   Provisioned   Standard_D4s_v3   eastus   1      11s
+aro-cluster-k69pt-l2wvn-worker-eastus2-jrhn9   Running       Standard_D4s_v3   eastus   2      137m
+aro-cluster-k69pt-l2wvn-worker-eastus3-4rmzn   Running       Standard_D4s_v3   eastus   3      137m
+
+```
 
 ```
 # oc get co
