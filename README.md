@@ -387,3 +387,129 @@ bunzip2: Can't guess original name for ocp4-cis-api-checks-pod.xml.bzip2 -- usin
 ```
 ![Create DNS ZONE](images/compliance-01.png)
 
+# Remediation
+
+## Before Remediation
+
+```
+# oc get ComplianceCheckResult | grep FAIL >CheckResultFail.txt
+
+# cat CheckResultFail.txt
+ocp4-cis-api-server-encryption-provider-cipher                                 FAIL     medium
+ocp4-cis-api-server-encryption-provider-config                                 FAIL     medium
+ocp4-cis-audit-log-forwarding-enabled                                          FAIL     medium
+ocp4-cis-configure-network-policies-namespaces                                 FAIL     high
+ocp4-cis-idp-is-configured                                                     FAIL     medium
+ocp4-cis-kubeadmin-removed                                                     FAIL     medium
+ocp4-cis-node-master-kubelet-configure-event-creation                          FAIL     medium
+ocp4-cis-node-master-kubelet-configure-tls-cipher-suites                       FAIL     medium
+ocp4-cis-node-master-kubelet-enable-iptables-util-chains                       FAIL     medium
+ocp4-cis-node-master-kubelet-enable-protect-kernel-defaults                    FAIL     medium
+ocp4-cis-node-master-kubelet-enable-protect-kernel-sysctl                      FAIL     medium
+ocp4-cis-node-master-kubelet-eviction-thresholds-set-hard-imagefs-available    FAIL     medium
+ocp4-cis-node-master-kubelet-eviction-thresholds-set-hard-imagefs-inodesfree   FAIL     medium
+ocp4-cis-node-master-kubelet-eviction-thresholds-set-hard-memory-available     FAIL     medium
+ocp4-cis-node-master-kubelet-eviction-thresholds-set-hard-nodefs-available     FAIL     medium
+ocp4-cis-node-master-kubelet-eviction-thresholds-set-hard-nodefs-inodesfree    FAIL     medium
+ocp4-cis-node-master-kubelet-eviction-thresholds-set-soft-imagefs-available    FAIL     medium
+ocp4-cis-node-master-kubelet-eviction-thresholds-set-soft-imagefs-inodesfree   FAIL     medium
+ocp4-cis-node-master-kubelet-eviction-thresholds-set-soft-memory-available     FAIL     medium
+ocp4-cis-node-master-kubelet-eviction-thresholds-set-soft-nodefs-available     FAIL     medium
+ocp4-cis-node-master-kubelet-eviction-thresholds-set-soft-nodefs-inodesfree    FAIL     medium
+ocp4-cis-node-worker-kubelet-configure-event-creation                          FAIL     medium
+ocp4-cis-node-worker-kubelet-configure-tls-cipher-suites                       FAIL     medium
+ocp4-cis-node-worker-kubelet-enable-iptables-util-chains                       FAIL     medium
+ocp4-cis-node-worker-kubelet-enable-protect-kernel-defaults                    FAIL     medium
+ocp4-cis-node-worker-kubelet-enable-protect-kernel-sysctl                      FAIL     medium
+ocp4-cis-node-worker-kubelet-eviction-thresholds-set-hard-imagefs-inodesfree   FAIL     medium
+ocp4-cis-node-worker-kubelet-eviction-thresholds-set-soft-imagefs-available    FAIL     medium
+ocp4-cis-node-worker-kubelet-eviction-thresholds-set-soft-imagefs-inodesfree   FAIL     medium
+ocp4-cis-node-worker-kubelet-eviction-thresholds-set-soft-memory-available     FAIL     medium
+ocp4-cis-node-worker-kubelet-eviction-thresholds-set-soft-nodefs-available     FAIL     medium
+ocp4-cis-node-worker-kubelet-eviction-thresholds-set-soft-nodefs-inodesfree    FAIL     medium
+ocp4-cis-scc-limit-container-allowed-capabilities                              FAIL     medium
+
+# cat CheckResultFail.txt | wc -l
+33
+
+```
+
+## Applying automatic compliance remediations
+
+```
+# oc get -n openshift-compliance complianceremediations
+NAME                                                                             STATE
+ocp4-cis-api-server-encryption-provider-cipher                                   NotApplied
+ocp4-cis-api-server-encryption-provider-config                                   NotApplied
+ocp4-cis-node-master-kubelet-configure-event-creation                            NotApplied
+ocp4-cis-node-master-kubelet-configure-tls-cipher-suites                         NotApplied
+ocp4-cis-node-master-kubelet-enable-iptables-util-chains                         NotApplied
+ocp4-cis-node-master-kubelet-enable-protect-kernel-defaults                      NotApplied
+ocp4-cis-node-master-kubelet-enable-protect-kernel-sysctl                        NotApplied
+ocp4-cis-node-master-kubelet-eviction-thresholds-set-hard-imagefs-available      NotApplied
+ocp4-cis-node-master-kubelet-eviction-thresholds-set-hard-imagefs-available-1    NotApplied
+ocp4-cis-node-master-kubelet-eviction-thresholds-set-hard-imagefs-inodesfree     NotApplied
+ocp4-cis-node-master-kubelet-eviction-thresholds-set-hard-imagefs-inodesfree-1   NotApplied
+ocp4-cis-node-master-kubelet-eviction-thresholds-set-hard-memory-available       NotApplied
+ocp4-cis-node-master-kubelet-eviction-thresholds-set-hard-memory-available-1     NotApplied
+ocp4-cis-node-master-kubelet-eviction-thresholds-set-hard-nodefs-available       NotApplied
+ocp4-cis-node-master-kubelet-eviction-thresholds-set-hard-nodefs-available-1     NotApplied
+ocp4-cis-node-master-kubelet-eviction-thresholds-set-hard-nodefs-inodesfree      NotApplied
+ocp4-cis-node-master-kubelet-eviction-thresholds-set-hard-nodefs-inodesfree-1    NotApplied
+ocp4-cis-node-master-kubelet-eviction-thresholds-set-soft-imagefs-available      NotApplied
+ocp4-cis-node-master-kubelet-eviction-thresholds-set-soft-imagefs-available-1    NotApplied
+ocp4-cis-node-master-kubelet-eviction-thresholds-set-soft-imagefs-available-2    NotApplied
+ocp4-cis-node-master-kubelet-eviction-thresholds-set-soft-imagefs-inodesfree     NotApplied
+ocp4-cis-node-master-kubelet-eviction-thresholds-set-soft-imagefs-inodesfree-1   NotApplied
+ocp4-cis-node-master-kubelet-eviction-thresholds-set-soft-imagefs-inodesfree-2   NotApplied
+ocp4-cis-node-master-kubelet-eviction-thresholds-set-soft-memory-available       NotApplied
+ocp4-cis-node-master-kubelet-eviction-thresholds-set-soft-memory-available-1     NotApplied
+ocp4-cis-node-master-kubelet-eviction-thresholds-set-soft-memory-available-2     NotApplied
+ocp4-cis-node-master-kubelet-eviction-thresholds-set-soft-nodefs-available       NotApplied
+ocp4-cis-node-master-kubelet-eviction-thresholds-set-soft-nodefs-available-1     NotApplied
+ocp4-cis-node-master-kubelet-eviction-thresholds-set-soft-nodefs-available-2     NotApplied
+ocp4-cis-node-master-kubelet-eviction-thresholds-set-soft-nodefs-inodesfree      NotApplied
+ocp4-cis-node-master-kubelet-eviction-thresholds-set-soft-nodefs-inodesfree-1    NotApplied
+ocp4-cis-node-master-kubelet-eviction-thresholds-set-soft-nodefs-inodesfree-2    NotApplied
+ocp4-cis-node-worker-kubelet-configure-event-creation                            NotApplied
+ocp4-cis-node-worker-kubelet-configure-tls-cipher-suites                         NotApplied
+ocp4-cis-node-worker-kubelet-enable-iptables-util-chains                         NotApplied
+ocp4-cis-node-worker-kubelet-enable-protect-kernel-defaults                      NotApplied
+ocp4-cis-node-worker-kubelet-enable-protect-kernel-sysctl                        NotApplied
+ocp4-cis-node-worker-kubelet-eviction-thresholds-set-hard-imagefs-inodesfree     NotApplied
+ocp4-cis-node-worker-kubelet-eviction-thresholds-set-hard-imagefs-inodesfree-1   NotApplied
+ocp4-cis-node-worker-kubelet-eviction-thresholds-set-soft-imagefs-available      NotApplied
+ocp4-cis-node-worker-kubelet-eviction-thresholds-set-soft-imagefs-available-1    NotApplied
+ocp4-cis-node-worker-kubelet-eviction-thresholds-set-soft-imagefs-available-2    NotApplied
+ocp4-cis-node-worker-kubelet-eviction-thresholds-set-soft-imagefs-inodesfree     NotApplied
+ocp4-cis-node-worker-kubelet-eviction-thresholds-set-soft-imagefs-inodesfree-1   NotApplied
+ocp4-cis-node-worker-kubelet-eviction-thresholds-set-soft-imagefs-inodesfree-2   NotApplied
+ocp4-cis-node-worker-kubelet-eviction-thresholds-set-soft-memory-available       NotApplied
+ocp4-cis-node-worker-kubelet-eviction-thresholds-set-soft-memory-available-1     NotApplied
+ocp4-cis-node-worker-kubelet-eviction-thresholds-set-soft-memory-available-2     NotApplied
+ocp4-cis-node-worker-kubelet-eviction-thresholds-set-soft-nodefs-available       NotApplied
+ocp4-cis-node-worker-kubelet-eviction-thresholds-set-soft-nodefs-available-1     NotApplied
+ocp4-cis-node-worker-kubelet-eviction-thresholds-set-soft-nodefs-available-2     NotApplied
+ocp4-cis-node-worker-kubelet-eviction-thresholds-set-soft-nodefs-inodesfree      NotApplied
+ocp4-cis-node-worker-kubelet-eviction-thresholds-set-soft-nodefs-inodesfree-1    NotApplied
+ocp4-cis-node-worker-kubelet-eviction-thresholds-set-soft-nodefs-inodesfree-2    NotApplied
+
+
+```
+
+> To apply a remediation, edit that object and set its Apply attribute to true:
+
+```
+oc patch -n openshift-compliance complianceremediation ocp4-cis-api-server-encryption-provider-config -p '{"spec":{"apply":true}}' --type='merge'
+complianceremediation.compliance.openshift.io/ocp4-cis-api-server-encryption-provider-config patched
+```
+
+## In order to apply all remediations, execute a loop
+
+```
+for m in $(oc get -n openshift-compliance complianceremediation -o name); do 
+  oc patch -n openshift-compliance $m -p '{"spec":{"apply":true}}' --type='merge'
+done
+
+
+```
