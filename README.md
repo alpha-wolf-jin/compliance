@@ -432,6 +432,31 @@ ocp4-cis-scc-limit-container-allowed-capabilities                              F
 # cat CheckResultFail.txt | wc -l
 33
 
+# oc get mc
+NAME                                               GENERATEDBYCONTROLLER                      IGNITIONVERSION   AGE
+00-master                                          a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             27m
+00-worker                                          a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             27m
+01-master-container-runtime                        a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             27m
+01-master-kubelet                                  a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             27m
+01-worker-container-runtime                        a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             27m
+01-worker-kubelet                                  a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             27m
+90-aro-worker-registries                                                                      2.2.0             30m
+99-master-aro-dns                                                                             2.2.0             30m
+99-master-generated-registries                     a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             27m
+99-master-ssh                                                                                 3.2.0             30m
+99-worker-aro-dns                                                                             2.2.0             30m
+99-worker-generated-kubelet                        a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             11m
+99-worker-generated-registries                     a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             27m
+99-worker-ssh                                                                                 3.2.0             30m
+rendered-master-3b0fa941cbb3b883ba1dbb3b6188beef   a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             27m
+rendered-worker-18d76dfbe03dc823d8e4c2005c7b9634   a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             11m
+rendered-worker-782f4a4ebaa397efe95f1a9daebb5cc2   a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             27m
+
+# oc get mcp
+NAME     CONFIG                                             UPDATED   UPDATING   DEGRADED   MACHINECOUNT   READYMACHINECOUNT   UPDATEDMACHINECOUNT   DEGRADEDMACHINECOUNT   AGE
+master   rendered-master-3b0fa941cbb3b883ba1dbb3b6188beef   True      False      False      3              3                   3                     0                      29m
+worker   rendered-worker-18d76dfbe03dc823d8e4c2005c7b9634   True      False      False      3              3                   3                     0                      29m
+
 ```
 
 ## Applying automatic compliance remediations
@@ -630,6 +655,7 @@ error: You must be logged in to the server (Unauthorized)
 # oc login --token=sha256~TdSDFbCzAclFCafGrUBknB-5vPgKFGc4PNMt75E4ZuU --server=https://api.vuyee8aj.eastus.aroapp.io:6443
 
 ```
+## Ensure Cluster is ready
 
 ```
 Every 2.0s: oc get mcp ; oc get node                                                          localhost.localdomain: Sun May 15 11:00:27 2022
@@ -648,5 +674,79 @@ aro-cluster-zzzmc-k2ssj-worker-eastus1-jvmn4   Ready    worker   17h   v1.22.5+a
 aro-cluster-zzzmc-k2ssj-worker-eastus2-7dgmg   Ready    worker   17h   v1.22.5+a36406b
 aro-cluster-zzzmc-k2ssj-worker-eastus3-j76jg   Ready    worker   17h   v1.22.5+a36406b
 
+# oc get co
+NAME                                       VERSION   AVAILABLE   PROGRESSING   DEGRADED   SINCE   MESSAGE
+aro                                                  True        False         False      17h     
+authentication                             4.9.28    True        False         False      17h     
+baremetal                                  4.9.28    True        False         False      17h     
+cloud-controller-manager                   4.9.28    True        False         False      17h     
+cloud-credential                           4.9.28    True        False         False      17h     
+cluster-autoscaler                         4.9.28    True        False         False      17h     
+config-operator                            4.9.28    True        False         False      17h     
+console                                    4.9.28    True        False         False      17h     
+csi-snapshot-controller                    4.9.28    True        False         False      17h     
+dns                                        4.9.28    True        False         False      17h     
+etcd                                       4.9.28    True        False         False      17h     
+image-registry                             4.9.28    True        False         False      17h     
+ingress                                    4.9.28    True        False         False      17h     
+insights                                   4.9.28    True        False         False      17h     
+kube-apiserver                             4.9.28    True        False         False      17h     
+kube-controller-manager                    4.9.28    True        False         False      17h     
+kube-scheduler                             4.9.28    True        False         False      17h     
+kube-storage-version-migrator              4.9.28    True        False         False      16m     
+machine-api                                4.9.28    True        False         False      17h     
+machine-approver                           4.9.28    True        False         False      17h     
+machine-config                             4.9.28    True        False         False      17h     
+marketplace                                4.9.28    True        False         False      17h     
+monitoring                                 4.9.28    True        False         False      17h     
+network                                    4.9.28    True        False         False      17h     
+node-tuning                                4.9.28    True        False         False      17m     
+openshift-apiserver                        4.9.28    True        False         False      13m     
+openshift-controller-manager               4.9.28    True        False         False      17h     
+openshift-samples                          4.9.28    True        False         False      17h     
+operator-lifecycle-manager                 4.9.28    True        False         False      17h     
+operator-lifecycle-manager-catalog         4.9.28    True        False         False      17h     
+operator-lifecycle-manager-packageserver   4.9.28    True        False         False      17h     
+service-ca                                 4.9.28    True        False         False      17h     
+storage                                    4.9.28    True        False         False      17h     
+
+```
+
+## Rerunning scans
+
+```
+# oc get compliancescans
+NAME                   PHASE   RESULT
+ocp4-cis               DONE    NON-COMPLIANT
+ocp4-cis-node-master   DONE    NON-COMPLIANT
+ocp4-cis-node-worker   DONE    NON-COMPLIANT
+
+# oc annotate compliancescans/ocp4-cis compliance.openshift.io/rescan=
+
+# oc annotate compliancescans/ocp4-cis-node-master compliance.openshift.io/rescan=
+
+# oc annotate compliancescans/ocp4-cis-node-worker compliance.openshift.io/rescan=
+
+# oc get compliancescans
+NAME                   PHASE       RESULT
+ocp4-cis               RUNNING     NOT-AVAILABLE
+ocp4-cis-node-master   RUNNING     NOT-AVAILABLE
+ocp4-cis-node-worker   LAUNCHING   NOT-AVAILABLE
+
+# oc get pod
+NAME                                                        READY   STATUS              RESTARTS      AGE
+aggregator-pod-ocp4-cis                                     0/1     Completed           0             80s
+aggregator-pod-ocp4-cis-node-worker                         0/1     Completed           0             72s
+compliance-operator-84d85bc88f-hldpt                        1/1     Running             1 (14m ago)   22m
+ocp4-cis-api-checks-pod                                     0/2     Completed           0             2m3s
+ocp4-cis-node-master-aro-cluster-zzzmc-k2ssj-master-0-pod   1/2     NotReady            0             110s
+ocp4-cis-node-master-aro-cluster-zzzmc-k2ssj-master-1-pod   1/2     NotReady            0             110s
+ocp4-cis-node-master-aro-cluster-zzzmc-k2ssj-master-2-pod   1/2     NotReady            0             110s
+ocp4-cis-node-master-rs-8476db99dd-cnknk                    0/1     ContainerCreating   0             110s
+ocp4-openshift-compliance-pp-54f89d9dc9-9cght               1/1     Running             0             19m
+openscap-pod-7eae438a8db5097be20881bc53a2d26b593da270       0/2     Completed           0             103s
+openscap-pod-8885e18ac4bfc20261916fbf7f67f9430fb8aed9       0/2     Completed           0             102s
+openscap-pod-f2b59d848a1e279ce70a7b1cdf224688d1137361       0/2     Completed           0             103s
+rhcos4-openshift-compliance-pp-6574f6fb4c-wkkj8             1/1     Running             0             22m
 
 ```
