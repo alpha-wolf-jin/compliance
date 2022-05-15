@@ -506,10 +506,64 @@ complianceremediation.compliance.openshift.io/ocp4-cis-api-server-encryption-pro
 
 ## In order to apply all remediations, execute a loop
 
+> The remedationis will create MCs.
+> Have to wait all MC applied and all nodes become Ready
+
 ```
 for m in $(oc get -n openshift-compliance complianceremediation -o name); do 
   oc patch -n openshift-compliance $m -p '{"spec":{"apply":true}}' --type='merge'
 done
 
+# oc get mc
+NAME                                                           GENERATEDBYCONTROLLER                      IGNITIONVERSION   AGE
+00-master                                                      a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             17h
+00-worker                                                      a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             17h
+01-master-container-runtime                                    a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             17h
+01-master-kubelet                                              a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             17h
+01-worker-container-runtime                                    a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             17h
+01-worker-kubelet                                              a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             17h
+75-ocp4-cis-node-master-kubelet-enable-protect-kernel-sysctl                                              3.1.0             2m26s
+75-ocp4-cis-node-worker-kubelet-enable-protect-kernel-sysctl                                              3.1.0             58s
+90-aro-worker-registries                                                                                  2.2.0             17h
+99-master-aro-dns                                                                                         2.2.0             17h
+99-master-generated-kubelet                                    a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             2m37s
+99-master-generated-registries                                 a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             17h
+99-master-ssh                                                                                             3.2.0             17h
+99-worker-aro-dns                                                                                         2.2.0             17h
+99-worker-generated-kubelet                                    a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             17h
+99-worker-generated-registries                                 a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             17h
+99-worker-ssh                                                                                             3.2.0             17h
+rendered-master-205afd970e59db3366a4ccb0c9975171               a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             2m31s
+rendered-master-3d71873c0e6c88466964b1ff8579df62               a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             17h
+rendered-master-8635c738fa6855603ec9bf0ab2aad771               a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             2m21s
+rendered-master-9513fffe31854fe2644002f0258a3e9d               a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             55s
+rendered-master-a518a1e3dfd19d12d9d20b9f8865c7f1               a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             2m26s
+rendered-master-fb12484228e39cd8dd6dfba845b0b136               a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             50s
+rendered-worker-2c49d7e9a7bc563444854f895a5e37ca               a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             38s
+rendered-worker-36b57610ebaa955ece4195845eed3f6d               a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             12s
+rendered-worker-41cb89ef607fb8869d5efe44e6d7b80e               a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             33s
+rendered-worker-46155890c939ab666433210d29012937               a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             17h
+rendered-worker-4a093fe4148c79b27eeae777e9c0c70b               a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             22s
+rendered-worker-93674372c0da7bbf6a6e5ce3b2657c52               a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             43s
+rendered-worker-a2d459b8a16f6a5c578d361d30106214               a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             48s
+rendered-worker-b2d0226789cff5586f8ad52246b10122               a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             17h
+rendered-worker-ca6653237d1356c0d06be06ffd3a3acb               a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             54s
+rendered-worker-cff3d077a26c256a26d3429e7e083af5               a4fba0f500ff1fdfced1919d81253f147fea02de   3.2.0             17s
+
+# oc get mcp
+NAME     CONFIG                                             UPDATED   UPDATING   DEGRADED   MACHINECOUNT   READYMACHINECOUNT   UPDATEDMACHINECOUNT   DEGRADEDMACHINECOUNT   AGE
+master   rendered-master-3d71873c0e6c88466964b1ff8579df62   False     True       False      3              0                   0                     0                      17h
+worker   rendered-worker-46155890c939ab666433210d29012937   False     True       False      3              0                   0                     0                      17h
+
+# oc get node
+NAME                                           STATUS                     ROLES    AGE   VERSION
+aro-cluster-zzzmc-k2ssj-master-0               Ready,SchedulingDisabled   master   17h   v1.22.5+a36406b
+aro-cluster-zzzmc-k2ssj-master-1               Ready                      master   17h   v1.22.5+a36406b
+aro-cluster-zzzmc-k2ssj-master-2               Ready                      master   17h   v1.22.5+a36406b
+aro-cluster-zzzmc-k2ssj-worker-eastus1-jvmn4   Ready,SchedulingDisabled   worker   17h   v1.22.5+a36406b
+aro-cluster-zzzmc-k2ssj-worker-eastus2-7dgmg   Ready                      worker   17h   v1.22.5+a36406b
+aro-cluster-zzzmc-k2ssj-worker-eastus3-j76jg   Ready                      worker   17h   v1.22.5+a36406b
 
 ```
+
+
