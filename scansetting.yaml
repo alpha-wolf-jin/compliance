@@ -8,7 +8,7 @@ rawResultStorage:
     node-role.kubernetes.io/worker: ""
   pvaccessModes:
   - ReadWriteOnce
-  storageClassName: managed-premium
+  storageClassName: gp2
   rotation: 10
   size: 10Gi
 roles:

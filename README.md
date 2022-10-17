@@ -863,3 +863,9 @@ ocp4-cis-scc-limit-container-allowed-capabilities                              F
 16
 
 ```
+
+Others:
+
+Please find the link below for check CIS manual checks
+
+https://github.com/avyas26/ocp_cis_manual_checks
